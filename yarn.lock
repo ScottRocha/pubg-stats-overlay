@@ -1049,10 +1049,6 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-bootstrap-material-design@^4.0.0-beta.3:
-  version "4.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/bootstrap-material-design/-/bootstrap-material-design-4.0.0-beta.3.tgz#78c1588fbaab38f1bb66e43154fd43bf3f69a500"
-
 bowser@^1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.7.3.tgz#504bdb43118ca8db9cbbadf28fd60f265af96e4f"
