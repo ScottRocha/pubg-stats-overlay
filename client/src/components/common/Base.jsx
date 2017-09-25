@@ -6,6 +6,10 @@ import { Switch } from "react-router-dom";
 import Footer from "./Footer";
 import HeaderPage from "../../containers/common/HeaderPage";
 
+// insert module CSS
+import "react-table/react-table.css";
+import "react-select-plus/dist/react-select-plus.css";
+
 
 const Base = ({ childrenWithProps, history, isAuthenticated }) => (
   <div>

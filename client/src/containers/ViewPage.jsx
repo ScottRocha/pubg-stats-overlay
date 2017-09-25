@@ -17,6 +17,8 @@ class StatsPage extends React.Component {
       "data": {},
       "loading": false,
       "id": this.props.match.params.view,
+      "width": document.documentElement.clientWidth,
+      "height": document.documentElement.clientHeight,
     };
 
   }
@@ -25,14 +27,16 @@ class StatsPage extends React.Component {
 
     this.getViewData();
     this.startViewSocket();
-    document.body.style.backgroundColor = "#00ff00";
+
+    window.addEventListener("resize", this.updateDimensions);
 
   }
 
   componentWillUnmount() {
 
     this.stopViewSocket();
-    document.body.style.backgroundColor = null;
+
+    window.removeEventListener("resize", this.updateDimensions);
 
   }
 
@@ -111,11 +115,22 @@ class StatsPage extends React.Component {
 
   }
 
+  updateDimensions() {
+
+    self.setState({
+      "width": document.documentElement.clientWidth,
+      "height": document.documentElement.clientHeight,
+    });
+
+  }
+
   render() {
 
     return (
       <View
         data={this.state.data}
+        width={this.state.width}
+        height={this.state.height}
       />
     );
 

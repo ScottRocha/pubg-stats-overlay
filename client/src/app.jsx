@@ -19,10 +19,6 @@ import createStore from "./datastore/createStore";
 
 const store = createStore();
 
-// insert module CSS
-import "react-table/react-table.css";
-import "react-select-plus/dist/react-select-plus.css";
-
 // remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
 

@@ -67,7 +67,7 @@ class StatsPage extends React.Component {
 
   onSelectChange(index, prop, value) {
 
-    if (value) {
+    if (value !== null) {
 
       const self = this;
 
