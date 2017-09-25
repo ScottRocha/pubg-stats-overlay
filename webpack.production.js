@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 
@@ -12,6 +13,7 @@ module.exports = merge(common, {
   "devtool": "source-map",
 
   "plugins": [
+    new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       "filename": "index.html",
       "template": path.join(__dirname, "/template/index.html"),
@@ -39,6 +41,7 @@ module.exports = merge(common, {
       "material-ui",
       "node-cron",
       "prop-types",
+      "pubg-api-redis/src/util/constants",
       "react",
       "react-dom",
       "react-redux",
