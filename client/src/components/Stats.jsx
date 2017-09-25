@@ -86,7 +86,7 @@ const Stats = ({ data, loading, expanded, onExpandedChange, onSelectChange, onAd
           ),
           "minWidth": 35,
         }, {
-          "Header": "Stat Region",
+          "Header": "Region",
           "Cell": (row) => (
             <Select
               clearable={false}
@@ -114,7 +114,7 @@ const Stats = ({ data, loading, expanded, onExpandedChange, onSelectChange, onAd
           ),
           "minWidth": 35,
         }, {
-          "Header": "Stat Season",
+          "Header": "Season",
           "Cell": (row) => (
             <Select
               clearable={false}
@@ -142,7 +142,7 @@ const Stats = ({ data, loading, expanded, onExpandedChange, onSelectChange, onAd
           ),
           "minWidth": 50,
         }, {
-          "Header": "Stat Game-Mode",
+          "Header": "Game-Mode",
           "Cell": (row) => (
             <Select
               clearable={false}
@@ -252,6 +252,7 @@ const Stats = ({ data, loading, expanded, onExpandedChange, onSelectChange, onAd
       }]}
       minRows={14}
       loading={loading}
+      resizable={false}
       filterable={false}
       sortable={false}
       expanded={expanded}

@@ -36,7 +36,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.2",
-    "bootstrap-material-design": "^4.0.0-beta.3",
     "clean-webpack-plugin": "^0.1.16",
     "compression": "^1.7.0",
     "compression-webpack-plugin": "^1.0.0",

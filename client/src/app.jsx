@@ -20,7 +20,6 @@ import createStore from "./datastore/createStore";
 const store = createStore();
 
 // insert module CSS
-import "bootstrap-material-design/dist/css/bootstrap-material-design.css";
 import "react-table/react-table.css";
 import "react-select-plus/dist/react-select-plus.css";
 

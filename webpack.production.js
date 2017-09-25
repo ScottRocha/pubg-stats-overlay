@@ -13,6 +13,11 @@ module.exports = merge(common, {
   "devtool": "source-map",
 
   "plugins": [
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production"),
+      },
+    }),
     new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       "filename": "index.html",
@@ -35,7 +40,6 @@ module.exports = merge(common, {
     "vendor": [
       "@dr-kobros/react-webfont-loader",
       "axios",
-      "bootstrap-material-design",
       "config",
       "localforage",
       "material-ui",
