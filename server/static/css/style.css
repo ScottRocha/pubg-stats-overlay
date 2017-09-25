@@ -1,0 +1,13 @@
+.middle-content {
+    width: 100%;
+    display: block;
+    position: fixed;
+    bottom: 60px;
+    top: 75px;
+    overflow-y: auto;
+}
+
+.Select-menu-outer {
+    position: relative !important;
+    height: 160px;
+}
