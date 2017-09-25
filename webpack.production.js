@@ -31,7 +31,7 @@ module.exports = merge(common, {
   "entry": {
     "bundle": path.join(__dirname, "/client/src/app.jsx"),
     "vendor": [
-      "@dr-kobros/react-webfont-loade",
+      "@dr-kobros/react-webfont-loader",
       "axios",
       "bootstrap-material-design",
       "config",
