@@ -8,7 +8,7 @@ const Home = ({ apiKey, apiKeyError, onAPIKeyChange, onAPIKeySubmit }) => (
   <Card>
     <CardTitle title="Welcome to my PUBG Stats Stream Overlay Creator" />
     <CardText>
-      You must first obtain an API key from <a href={"https://pubgtracker.com/"}>https://pubgtracker.com/</a> as this site uses their API exclusively.
+      You must first obtain an API key from <a href={"https://pubgtracker.com/site-api/create"}>https://pubgtracker.com/site-api/create</a> as this site uses their API exclusively.
       <br />
       Once you get your API key please enter it below to begin.
     </CardText>
