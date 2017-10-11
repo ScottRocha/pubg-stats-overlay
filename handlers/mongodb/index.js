@@ -24,6 +24,7 @@ module.exports = (logger) => {
   });
 
   const stats = require("./models/Stats")(connection);
+  const accounts = require("./models/Accounts")(connection);
 
   connection.on("connecting", () => {
 
@@ -44,7 +45,7 @@ module.exports = (logger) => {
 
     jobs.startAllJobs({
       connection,
-      "models": { stats },
+      "models": { stats, accounts },
     }, logger);
 
   });
@@ -73,7 +74,7 @@ module.exports = (logger) => {
 
   return {
     connection,
-    "models": { stats },
+    "models": { stats, accounts },
   };
 
 };

@@ -7,7 +7,12 @@
     overflow-y: auto;
 }
 
+.centered-card {
+    width: 50%;
+    margin: auto;
+}
+
 .Select-menu-outer {
-    position: relative !important;
-    height: 160px;
+    /*position: relative !important;*/
+    /*height: 160px;*/
 }

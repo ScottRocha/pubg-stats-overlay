@@ -1,7 +1,7 @@
 import React from "react";
 
 import Home from "../components/Home";
-import { checkKey } from "../datastore/actions/authentication";
+import { checkUnAuth } from "../helpers/auth";
 
 
 class HomePage extends React.Component {
@@ -10,44 +10,18 @@ class HomePage extends React.Component {
 
     super(props);
 
-    this.state = { "apiKey": "" };
-
   }
 
-  onAPIKeyChange(event) {
+  componentWillMount() {
 
-    this.setState({ "apiKey": event.target.value });
-
-  }
-
-  onAPIKeySubmit() {
-
-    const self = this;
-
-    self.props.dispatch(checkKey(self.state.apiKey))
-      .then(() => {
-
-        self.props.history.push("/stats");
-
-      }).catch((err) => {
-
-        self.setState({
-          "apiKeyError": err.message,
-        });
-
-      });
+    checkUnAuth(this.props);
 
   }
 
   render() {
 
     return (
-      <Home
-        apiKey={this.state.apiKey}
-        apiKeyError={this.state.apiKeyError}
-        onAPIKeyChange={this.onAPIKeyChange.bind(this)}
-        onAPIKeySubmit={this.onAPIKeySubmit.bind(this)}
-      />
+      <Home history={this.props.history} />
     );
 
   }

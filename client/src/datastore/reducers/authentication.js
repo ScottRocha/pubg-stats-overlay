@@ -1,36 +1,62 @@
 /* eslint-disable no-undefined */
 
-import { KEY_TEST_REQUEST, KEY_TEST_SUCCESS, KEY_TEST_FAILURE } from "../actions/authentication";
+import {
+  REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE,
+  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS,
+} from "../actions/authentication";
 
 const initialState = {
   "isFetching": false,
   "isAuthenticated": false,
-  "apiKey": undefined,
+  "email": undefined,
+  "password": undefined,
+  "userId": undefined,
+  "message": undefined,
   "error": undefined,
+
 };
 
 export default function authentication(state = initialState, action) {
 
   switch (action.type) {
 
-  case KEY_TEST_REQUEST:
+  case LOGIN_REQUEST:
     return Object.assign({}, state, {
       "isFetching": true,
       "isAuthenticated": false,
-      "apiKey": action.apiKey,
+      "email": action.email,
+      "password": action.password,
     });
-  case KEY_TEST_SUCCESS:
+  case LOGIN_SUCCESS:
     return Object.assign({}, state, {
       "isFetching": false,
       "isAuthenticated": true,
-      "apiKey": action.apiKey,
+      "password": undefined,
+      "user": action.user,
+      "userId": action.userId,
+      "message": action.message,
+      "error": undefined,
     });
-  case KEY_TEST_FAILURE:
+  case LOGIN_FAILURE:
     return Object.assign({}, state, {
       "isFetching": false,
       "isAuthenticated": false,
-      "apiKey": undefined,
+      "password": undefined,
+      "user": {},
+      "userId": undefined,
+      "message": undefined,
       "error": action.error,
+    });
+  case LOGOUT_SUCCESS:
+    return Object.assign({}, state, {
+      "isFetching": false,
+      "isAuthenticated": false,
+      "email": undefined,
+      "password": undefined,
+      "user": {},
+      "userId": undefined,
+      "message": undefined,
+      "error": undefined,
     });
   default:
     return state;

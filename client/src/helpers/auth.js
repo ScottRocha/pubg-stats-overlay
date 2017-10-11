@@ -7,3 +7,13 @@ export const checkAuth = (props) => {
   }
 
 };
+
+export const checkUnAuth = (props) => {
+
+  if (props.isAuthenticated) {
+
+    props.history.push("/stats");
+
+  }
+
+};

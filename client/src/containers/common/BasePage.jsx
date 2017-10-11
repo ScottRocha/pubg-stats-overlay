@@ -20,7 +20,7 @@ class BasePage extends React.Component {
 
   render() {
 
-    const { dispatch, isAuthenticated, apiKey, error, isRehydrated } = this.props;
+    const { dispatch, isAuthenticated, user, error, isRehydrated } = this.props;
 
     if (isRehydrated) {
 
@@ -37,7 +37,7 @@ class BasePage extends React.Component {
           }),
           dispatch,
           isAuthenticated,
-          apiKey,
+          user,
           error,
         };
 
@@ -53,8 +53,7 @@ class BasePage extends React.Component {
       return (
         <Base
           childrenWithProps={childrenWithProps}
-          isAuthenticated={this.props.isAuthenticated}
-          user={this.props.user}
+          isAuthenticated={isAuthenticated}
           history={this.props.history} />
       );
 
@@ -73,12 +72,12 @@ const mapStateToProps = (state) => {
 
   const { authentication, rehydrate } = state;
 
-  const { isAuthenticated, apiKey, error } = authentication;
+  const { isAuthenticated, user, error } = authentication;
   const { isRehydrated } = rehydrate;
 
   return {
     isAuthenticated,
-    apiKey,
+    user,
     error,
     isRehydrated,
   };

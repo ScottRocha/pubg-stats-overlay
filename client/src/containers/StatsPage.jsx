@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import React from "react";
 
 import Axios from "axios";
@@ -14,6 +16,7 @@ class StatsPage extends React.Component {
 
     this.state = {
       "data": [],
+      "font": {},
       "expanded": {},
       "loading": true,
     };
@@ -57,11 +60,96 @@ class StatsPage extends React.Component {
 
   }
 
+  onGetFonts(search) {
+
+    return new Promise((resolve) => {
+
+      Axios("/api/fonts", {
+        "method": "get",
+        "params": {
+          search,
+        },
+      }).then((response) => {
+
+        return resolve({ "options": response.data });
+
+      }).catch(() => {
+
+        return resolve({ "options": [] });
+
+      });
+
+    });
+
+  }
+
+  onGetFontData(font) {
+
+    let self = this;
+
+    Axios("/api/font/" + font, {
+      "method": "get",
+    }).then((response) => {
+
+      self.setState({ "font": response.data });
+
+    }).catch(() => {
+
+      self.setState({ "font": {} });
+
+    });
+
+  }
+
   onExpandedChange(expanded) {
 
     this.setState({
       "expanded": Object.assign({}, this.state.expanded, expanded),
+      "font": {},
     });
+
+  }
+
+  onFontChange(index, value) {
+
+    if (value !== null) {
+
+      const self = this;
+
+      const data = self.state.data;
+
+      if (data[index] && data[index].font_type !== value) {
+
+        data[index].font_type = value;
+
+        self.setState({ data }, () => {
+
+          self.onGetFontData(value);
+          self.onSubmitUpdate(index);
+
+        });
+
+      }
+
+    }
+
+  }
+
+  onFontColorClick(index) {
+
+    this.setState({
+      "picker": Object.assign({}, this.state.picker, {
+
+        [index]: typeof this.state.picker[index] === "boolean" ? !this.state.picker[index] : true,
+
+      }),
+    });
+
+  }
+
+  onCloseAllFontPickers() {
+
+    this.setState({ "picker": {} });
 
   }
 
@@ -75,28 +163,7 @@ class StatsPage extends React.Component {
 
       if (data[index] && data[index][prop] !== value) {
 
-        if (prop === "font_type") {
-
-          if (value.split("|").length !== 1) {
-
-            data[index].fontErrorText = "You can only include one font family per view";
-
-          } else if (value.split(",").length !== 1) {
-
-            data[index].fontErrorText = "You can only include one font style per view";
-
-          } else {
-
-            data[index][prop] = value;
-            delete data[index].fontErrorText;
-
-          }
-
-        } else {
-
-          data[index][prop] = value;
-
-        }
+        data[index][prop] = value;
 
         self.setState({ data }, () => {
 
@@ -213,9 +280,14 @@ class StatsPage extends React.Component {
     return (
       <Stats
         data={this.state.data}
+        font={this.state.font}
         loading={this.state.loading}
         expanded={this.state.expanded}
+        onGetFonts={this.onGetFonts.bind(this)}
         onExpandedChange={this.onExpandedChange.bind(this)}
+        onFontChange={this.onFontChange.bind(this)}
+        onFontColorClick={this.onFontColorClick.bind(this)}
+        onCloseAllFontPickers={this.onCloseAllFontPickers.bind(this)}
         onSelectChange={this.onSelectChange.bind(this)}
         onAddView={this.onAddView.bind(this)}
         onRemoveView={this.onRemoveView.bind(this)}

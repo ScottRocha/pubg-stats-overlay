@@ -1,41 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Card, CardActions, CardText, CardTitle, RaisedButton, TextField } from "material-ui";
+import { Card, CardActions, CardText, CardTitle, FlatButton } from "material-ui";
 
 
-const Home = ({ apiKey, apiKeyError, onAPIKeyChange, onAPIKeySubmit }) => (
+const Home = ({ history }) => (
   <Card>
     <CardTitle title="Welcome to my PUBG Stats Stream Overlay Creator" />
     <CardText>
-      You must first obtain an API key from <a href={"https://pubgtracker.com/site-api/create"}>https://pubgtracker.com/site-api/create</a> as this site uses their API exclusively.
-      <br />
-      Once you get your API key please enter it below to begin.
+      This site now requires account creation. Please login or register using the links below.
     </CardText>
     <CardActions>
-      <TextField
-        minLength={36}
-        floatingLabelText="PUBG Tracker API Key"
-        value={apiKey}
-        onChange={onAPIKeyChange}
-        errorText={apiKeyError}
-        maxLength={36}
-      />
-      <RaisedButton
+      <FlatButton
         primary
-        label="Lookup Stats Views"
-        disabled={apiKey.length !== 36 || apiKey.split("-").length !== 5}
-        onClick={onAPIKeySubmit}
+        label="Register"
+        onClick={history.push("/register")}
+      />
+      <FlatButton
+        secondary
+        label="Login"
+        onClick={history.push("/login")}
       />
     </CardActions>
   </Card>
 );
 
 Home.propTypes = {
-  "apiKey": PropTypes.string.isRequired,
-  "apiKeyError": PropTypes.string,
-  "onAPIKeyChange": PropTypes.func.isRequired,
-  "onAPIKeySubmit": PropTypes.func.isRequired,
+  "history": PropTypes.object.isRequired,
 };
 
 export default Home;

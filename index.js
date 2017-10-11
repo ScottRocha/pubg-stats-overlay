@@ -76,6 +76,7 @@ app.use(contentSecurityPolicy({
     "styleSrc": [ "'self'", "'unsafe-inline'", "fonts.googleapis.com", "maxcdn.bootstrapcdn.com" ],
     "fontSrc": [ "'self'", "fonts.gstatic.com", "maxcdn.bootstrapcdn.com" ],
     "imgSrc": [ "'self'", "data:" ],
+    "connectSrc": [ "'self'", "www.googleapis.com" ],
     "sandbox": [ "allow-forms", "allow-same-origin", "allow-scripts" ],
     "objectSrc": ["'none'"],
   },

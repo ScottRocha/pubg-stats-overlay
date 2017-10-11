@@ -2,32 +2,28 @@
 
 const { PubgAPI } = require("pubg-api-redis");
 
-// const config = {
-//   "redisConfig": {
-//     "host": process.env.REDIS_HOST,
-//     "port": process.env.REDIS_PORT,
-//     "expiration": 300, // Optional - defaults to 300.
-//     "password": process.env.REDIS_PASSWORD,
-//   },
-// };
+const config = {
+  "redisConfig": {
+    "host": process.env.REDIS_HOST,
+    "port": process.env.REDIS_PORT,
+    "expiration": 300, // Optional - defaults to 300.
+    "password": process.env.REDIS_PASSWORD,
+  },
+};
+
+const api = new PubgAPI(Object.assign({}, { "apikey": process.env.PUBG_API_KEY }, config));
 
 class StatsAPI {
 
-  constructor(key) {
+  static getProfileByNickname(nickname) {
 
-    this.api = new PubgAPI(Object.assign({}, { "apikey": key })) // , config));
-
-  }
-
-  getProfileByNickname(nickname) {
-
-    return this.api.getProfileByNickname(nickname);
+    return api.getProfileByNickname(nickname);
 
   }
 
-  getAccountBySteamID(id) {
+  static getAccountBySteamID(id) {
 
-    return this.api.getAccountBySteamID(id);
+    return api.getAccountBySteamID(id);
 
   }
 

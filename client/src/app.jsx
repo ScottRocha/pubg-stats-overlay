@@ -10,6 +10,11 @@ import { Provider } from "react-redux";
 
 import BasePage from "./containers/common/BasePage";
 import HomePage from "./containers/HomePage";
+
+import RegisterPage from "./containers/authentication/RegisterPage";
+import LoginPage from "./containers/authentication/LoginPage";
+import LogoutPage from "./containers/authentication/LogoutPage";
+
 import StatsPage from "./containers/StatsPage";
 import ViewPage from "./containers/ViewPage";
 
@@ -34,6 +39,11 @@ render(
               return (
                 <BasePage {...props}>
                   <Route exact path="/" component={HomePage} />
+
+                  <Route exact path="/register" component={RegisterPage} />
+                  <Route exact path="/login" component={LoginPage} />
+                  <Route exact path="/logout" component={LogoutPage} />
+
                   <Route exact path="/stats" component={StatsPage} />
                   <Route component={NotFound} />
                 </BasePage>

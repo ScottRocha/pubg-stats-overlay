@@ -10,12 +10,47 @@ class HeaderPage extends React.Component {
 
     super(props);
 
+    this.state = {
+      "isDrawerOpen": false,
+    };
+
+  }
+
+  onToggleDrawer() {
+
+    this.setState({
+      "isDrawerOpen": !this.state.isDrawerOpen,
+    });
+
+  }
+
+  onCloseDrawer() {
+
+    this.setState({
+      "isDrawerOpen": false,
+    });
+
+  }
+
+  onSetDrawerState(state) {
+
+    this.setState({
+      "isDrawerOpen": state,
+    });
+
   }
 
   render() {
 
     return (
-      <Header history={this.props.history} />
+      <Header
+        isAuthenticated={this.props.isAuthenticated}
+        isDrawerOpen={this.state.isDrawerOpen}
+        onToggleDrawer={this.onToggleDrawer.bind(this)}
+        onCloseDrawer={this.onCloseDrawer.bind(this)}
+        onSetDrawerState={this.onSetDrawerState.bind(this)}
+        history={this.props.history}
+      />
     );
 
   }
@@ -23,6 +58,7 @@ class HeaderPage extends React.Component {
 }
 
 HeaderPage.propTypes = {
+  "isAuthenticated": PropTypes.bool.isRequired,
   "history": PropTypes.object.isRequired,
 };
 

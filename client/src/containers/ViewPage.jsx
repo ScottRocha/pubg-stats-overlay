@@ -58,7 +58,7 @@ class StatsPage extends React.Component {
         Axios("/api/view", {
           "method": "get",
           "headers": {
-            "apiKey": stat.api_key,
+            "userId": stat.userId,
           },
           "params": {
             "profile_name": stat.profile_name,

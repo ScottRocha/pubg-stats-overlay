@@ -38,9 +38,9 @@ export default (initialState) => {
     "blacklist": ["rehydrate"],
   }, () => {
 
-    if (store.getState().authentication.apiKey) {
+    if (store.getState().authentication.userId) {
 
-      Axios.defaults.headers.common.apiKey = store.getState().authentication.apiKey;
+      Axios.defaults.headers.common.userId = store.getState().authentication.userId;
 
     }
 
