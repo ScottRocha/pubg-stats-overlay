@@ -43,7 +43,6 @@ module.exports = merge(common, {
       "config",
       "localforage",
       "material-ui",
-      "material-ui-color-picker",
       "node-cron",
       "prop-types",
       "pubg-api-redis/src/util/constants",
